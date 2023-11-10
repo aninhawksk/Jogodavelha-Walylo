@@ -14,3 +14,15 @@ document.addEventListener ("click", (event) =>){
         jogar(event.target.id);
     }
 });
+
+  function jogar(id) {
+    const celula = document.getElementById(id);
+    if (celula.textContent === "") {
+        turno = checarTurno ? JOGADOR_X : JOGADOR_O;
+        checarTurno = !checarTurno;
+        celula.textContent = turno;
+        celula.classList.add(turno);
+        celula.removeEventListener("click", jogar);
+        verificarVencedor(turno);
+    }
+  }
